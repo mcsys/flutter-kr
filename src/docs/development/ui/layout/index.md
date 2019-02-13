@@ -14,11 +14,11 @@ diff2html: true
 <style>dl, dd { margin-bottom: 0; }</style>
 
 {{site.alert.secondary}}
-  <h4 class="no_toc">What's the point?</h4>
+  <h4 class="no_toc">요점은 무엇인가요?</h4>
 
-  * Widgets are classes used to build UIs.
-  * Widgets are used for both layout and UI elements.
-  * Compose simple widgets to build complex widgets.
+  * Widget 은 UI를 만들기 위해 사용하는 클래스입니다.
+  * Widget 은 layout과 UI 요소 모두에 사용합니다.
+  * 간단한 widget 을 조합하여 복잡한 widget 을 만듭니다.
 {{site.alert.end}}
 
 The core of Flutter's layout mechanism is widgets. In Flutter, almost
@@ -26,9 +26,16 @@ everything is a widget&mdash;even layout models are widgets.
 The images, icons, and text that you see in a Flutter app  are all widgets.
 But things you don't see are also widgets, such as the rows, columns,
 and grids that arrange, constrain, and align the visible widgets.
+플러터 레이아웃 메카니즘 핵심은 위젯입니다. 플러터 안에서, 거의 모든 것은 widget 입니다.
+레이아웃 모델들 조차 widget 입니다.
+플러터 앱 안에서 여러분이 볼 수 있는 이미지, 아이콘, 텍스트는 모두 widget 입니다.
+그러나 여러분이 볼 수 없는 것들 또한 widget 입니다, 예를 들면 열, 행, 그리고 배치된 격자, 제약조건,
+그리고 widget 의 정렬.
 
 You create a layout by composing widgets to build more complex widgets.
 For example, the first screenshot below shows 3 icons with a label under each one:
+여러분은 widget을 조합하여 좀 더 복잡한 widget을 만들어 레이아웃을 만들수 있습니다.
+예를 들면, 첫 번째 스크린샷 아래에는 각각 아래에 라벨이 있는 3개의 아이콘을 보여줍니다.
 
 <div class="row mb-4">
   <div class="col-12 text-center">
@@ -39,6 +46,8 @@ For example, the first screenshot below shows 3 icons with a label under each on
 
 The second screenshot displays the visual layout, showing a row of
 3 columns where each column contains an icon and a label.
+두 번째 스크린샷은 시각적인 레이아웃을 표시합니다,
+각각 하나의 아이콘과 라벨을 포함하는 3개의 열이 하나의 행에 보여집니다.
 
 {{site.alert.note}}
   Most of the screenshots in this tutorial are displayed with
@@ -49,6 +58,7 @@ The second screenshot displays the visual layout, showing a row of
 {{site.alert.end}}
 
 Here's a diagram of the widget tree for this UI:
+다음은 이 UI를 위한 widget 트리의 다이어그램입니다.
 
 {% asset ui/layout/sample-flutter-layout.png class="mw-100" alt="Node tree" %}
 {:.text-center}
@@ -58,10 +68,14 @@ about the containers (shown in pink). [Container][] is a widget class that allow
 you to customize its child widget. Use a `Container` when you want to
 add padding, margins, borders, or background color, to name some of its
 capabilities.
+대부분은 여러분이 예상대로 보일 것입니다, 그러나 여러분은 아마 container 에 대해 궁금해 하실것입니다.
+[Container][] 는 여러분이 Container 자식 widget을 사용자 정의할 수 있는 widget 클래스입니다.
 
 In this example, each [Text][] widget is placed in a `Container` to add margins.
 The entire [Row][] is also placed in a `Container` to add padding around the
 row.
+여기 예제에서, 각각의 [Text][] widget 은 마진을 추가하여 `Container` 안에 놓여집니다.
+전체 [Row][] 또한, 행 주변에 패딩을 추가하여 `Container` 안에 놓여집니다.
 
 The rest of the UI in this example is controlled by properties.
 Set an [Icon][]'s color using its `color` property.
@@ -69,29 +83,43 @@ Use the `Text.style` property to set the font, its color, weight, and so on.
 Columns and rows have properties that allow you to specify how their
 children are aligned vertically or horizontally, and how much space
 the children should occupy.
+여기 예제에서 나머지 UI는 속성에 따라 제어됩니다. [Icon][]의 색상은 `color` 속성을 사용하여 설정합니다.
+`Text.style` 속상을 사용해서 폰트, 색상, 비중 등등을 설정합니다.
+행과 열은 어떻게 자식을 수직적 또는 수평적으로 정렬할 것인지, 얼마나 많은 여백을 사용할지 여러분이 정의할 수 있는 속성을 가집니다.
+
 
 ## Lay out a widget
+## widget 배치
 
 How do you layout a single widget in Flutter? This section shows you how to
 create and display a simple widget. It also shows the entire code for a simple
 Hello World app.
+플러터에서 여러분은 어떻게 단일 widget을 배치할 것인가요? 이번 부분은 여러분이 어떻게 단일 widget을 만들고 표현할지 보여드립니다.
+또한 간단한 Hello World app을 통해 전체 코드를 보여줍니다.
 
 In Flutter, it takes only a few steps to put text, an icon, or an image on the
 screen.
+플러터에서, 단지 몇 단계만으로 화면에 문자, 아이콘, 이미지를 넣을 수 있습니다.
 
 ### 1. Select a layout widget
+### 1. 레이아웃 widget 을 선택합니다.
 
 Choose from a variety of [layout widgets][] based
 on how you want to align or constrain the visible widget,
 as these characteristics are typically passed on to the
 contained widget.
+정렬 또는 제약조건의 특성을 일반적으로 포함하고 있는 widget을 여러분이 원하는 정렬 또는 제약조건에 근거하여
+여러 가지의 [layout widgets][] 선택합니다,
 
 This example uses [Center][] which centers its content
 horizontally and vertically.
+이 예제는 [Center][] 사용합니다. 이것의 콘텐츠가 수평적 그리고 수직적으로 중심에 위치하도록 합니다
 
 ### 2. Create a visible widget
+### 2. 가시적인 widget을 만듭니다.
 
 For example, create a [Text][] widget:
+예를 들면, [Text][] widget을 만듭니다:
 
 <?code-excerpt "layout/base/lib/main.dart (text)" replace="/child: //g"?>
 ```dart
@@ -99,6 +127,7 @@ Text('Hello World'),
 ```
 
 Create an [Image][] widget:
+[Image][] widget을 만듭니다:
 
 <?code-excerpt "layout/lakes/step5/lib/main.dart (Image-asset)" remove="/width|height/"?>
 ```dart
@@ -109,6 +138,7 @@ Image.asset(
 ```
 
 Create an [Icon][] widget:
+[Icon][] widget을 만듭니다:
 
 <?code-excerpt "layout/lakes/step5/lib/main.dart (Icon)"?>
 ```dart
@@ -119,17 +149,24 @@ Icon(
 ```
 
 ### 3. Add the visible widget to the layout widget
+### 3. 레이아웃 위젯에 가시적인 위젯을 추가합니다.
 
 <?code-excerpt path-base="layout/base"?>
 
 All layout widgets have either of the following:
+모든 레이아웃 위젯은 다음중 하나를 가집니다:
 
 - A `child` property if they take a single child -- for example, `Center` or
   `Container`
 - A `children` property if they take a list of widgets -- for example, `Row`,
   `Column`, `ListView`, or `Stack`.
+- `child` 속성이 하나의 자식을 가진다면 -- 예, `Center` 또는
+  `Container`
+- A `children` 속성의 여러 widget 목록을 가진다면 -- 예, `Row`,
+  `Column`, `ListView`, 또는 `Stack`.
 
 Add the `Text` widget to the `Center` widget:
+`Text` widget 을 `Center` widget 에 추가합니다.:
 
 <?code-excerpt "lib/main.dart (centered-text)" replace="/body: //g"?>
 ```dart
@@ -139,10 +176,14 @@ Center(
 ```
 
 ### 4. Add the layout widget to the page
+### 4. 레이아웃 widget을 page에 추가합니다
 
 A Flutter app is itself a widget, and most widgets have a [build()][]
 method. Instantiating and returning a widget in the app's `build()` method
 displays the widget.
+플러터 앱은 스스로가 widget입니다, 그리고 모든 widget은 [build()][] 메소드를 가집니다.
+앱 `build()` method에서 초기화하고 반환된 widget은 widget을 표시합니다.
+
 
 #### Material apps
 
