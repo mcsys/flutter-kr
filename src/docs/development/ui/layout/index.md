@@ -26,7 +26,7 @@ everything is a widget&mdash;even layout models are widgets.
 The images, icons, and text that you see in a Flutter app  are all widgets.
 But things you don't see are also widgets, such as the rows, columns,
 and grids that arrange, constrain, and align the visible widgets.
-플러터 레이아웃 메카니즘 핵심은 위젯입니다. 플러터 안에서, 거의 모든 것은 widget 입니다.
+플러터 레이아웃 메카니즘 핵심은 위젯입니다. 플러터에서, 거의 모든 것은 widget 입니다.
 레이아웃 모델들 조차 widget 입니다.
 플러터 앱 안에서 여러분이 볼 수 있는 이미지, 아이콘, 텍스트는 모두 widget 입니다.
 그러나 여러분이 볼 수 없는 것들 또한 widget 입니다, 예를 들면 열, 행, 그리고 배치된 격자, 제약조건,
