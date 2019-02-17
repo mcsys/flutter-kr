@@ -186,11 +186,15 @@ displays the widget.
 
 
 #### Material apps
+#### 머티리얼 앱
 
 For a `Material` app, you can use a [Scaffold][] widget; it provides a default
 banner, background color, and has API for adding drawers, snack bars, and bottom
 sheets. Then you can add the `Center` widget directly to the `body` property for
 the home page.
+`Material` 앱을 위해, 여러분들은 [Scaffold][] 위젯을 사용할 수 있습니다.; 
+그것은 기본 배너, 배경색을 제공하고, 드로어, 스낵바, 바텀 시트 추가를 위한 API를 가지고 있습니다.
+그래서 여러분은 `Center` widget을 홈페이지를 위한 `body` 속성에 직접 추가할 수 있습니다.
 
 <?code-excerpt path-base="layout/base"?>
 <?code-excerpt "lib/main.dart (MyApp)" title?>
@@ -220,12 +224,18 @@ class MyApp extends StatelessWidget {
   the Material library. You can mix widgets from both libraries, you can
   customize existing widgets, or you can build your own set of custom
   widgets.
+  [머티리얼 라이브러리][]는 [머티리얼 디자인][] 원리에 따라 widget 구현합니다. 
+  여러분의 UI를 설계할때, 여러분은 표준 [widgets library][]에서 widget만 독점적으로 사용할 수도 있습니다,
+  또는 여러분은 머티리얼 라이브러리에서 widget을 사용할 수도 있습니다. 여러분은 두 라이브러리에서 결합하여 widget을
+  사용할 수도 있습니다, 여러분은 기존의 widget을 커스터마이즈 하거나, 또는 여러분의 커스텀 widget 세트를 만들 수 있습니다.
 {{site.alert.end}}
 
 #### Non-Material apps
+#### Non-Material 앱
 
 For a non-Material app, you can add the `Center` widget to the app's
 `build()` method:
+머티리얼이 아닌 앱을 위해, 여러분은 `Center` widget을 앱의 `build()` 메소드에 추가할 수 있십니다
 
 <?code-excerpt path-base="layout/non_material"?>
 <?code-excerpt "lib/main.dart (MyApp)" title?>
@@ -254,10 +264,14 @@ By default a non-Material app doesn't include an `AppBar`, title, or background
 color. If you want these features in a non-Material app, you have to build them
 yourself. This app changes the background color to white and the text to dark
 grey to mimic a Material app.
+기본적으로 Non-Material 앱은 `AppBar`, 타이틀, 배경색을 포함하지 않습니다. 여러분이 만약 
+non-Material 앱에서 이러한 기능을 원하는 경우, 직접 빌드해야 합니다. 이 앱은 배경색을 흰색으로 텍스트는 
+어두운 회색으로 변경하여 머티리얼 앱을 모방합니다.
 
 <div class="row">
 <div class="col-md-6" markdown="1">
   That's it! When you run the app, you should see _Hello World_.
+  여러분이 앱을 실행하면, 여러분은 _Hello World_ 를 보실 수 있습니다.
 
   App source code:
   - [Material app]({{examples}}/layout/base)
@@ -272,15 +286,20 @@ grey to mimic a Material app.
 <hr>
 
 ## Lay out multiple widgets vertically and horizontally
+## 여러 widget을 가로 세로로 배치
 
 <?code-excerpt path-base=""?>
 
 One of the most common layout patterns is to arrange widgets vertically
 or horizontally. You can use a Row widget to arrange widgets horizontally,
 and a Column widget to arrange widgets vertically.
+많은 일반적인 레이아웃 패턴중의 하나는 widget을 세로 또는 가로로 배치하는 것입니다. 여러분은 widget을
+가로로 배치하기 위해 Row widget을 사용하거나 widget을 새로로 배치하기 위해 Column widget을 사용할 수 있습니다.
+
 
 {{site.alert.secondary}}
   <h4 class="no_toc">What's the point?</h4>
+  <h4 class="no_toc">포인트는 무엇인가?</h4>
 
   * Row and Column are two of the most commonly used layout patterns.
   * Row and Column each take a list of child widgets.
@@ -289,20 +308,33 @@ and a Column widget to arrange widgets vertically.
     and horizontally.
   * You can stretch or constrain specific child widgets.
   * You can specify how child widgets use the Row's or Column's available space.
+
+  * Row 와 Column 일반적으로 많이 하용하는 레이아웃 패턴입니다.
+  * Row 와 Column 각각 자식 widget의 목록을 가지고 있습니다.
+  * 하나의 자식 widget은 Row, Column 또는 다른 복잡한 widget 일 수 있습니다.
+  * 여러분은 Row 또는 Column의 자식을 세로 및 가로 모두 어떻게 정렬할지에 명시할 수 있습니다.
+  * 여러분은 자식 widget을 늘리거나 제약조건을 넣을수 있습니다.
+  * 여러분은 자식 widget이 Row 또는 Column 에서 얼마나 공간을 자치할지 명시할 수 있습니다.
 {{site.alert.end}}
 
 To create a row or column in Flutter, you add a list of children widgets to a
 [Row][] or [Column][] widget. In turn, each child can itself be a row or column,
 and so on. The following example shows how it is possible to nest rows or
 columns inside of rows or columns.
+플러터에서 행 또는 열을 만들기 위해, 여러분은 [Row][] 또는 [Column][] widget에 자식 widget 리스트를 
+추가할 수 있습니다. 차례대로, 각각의 자식은 행 또는 열, 기타 등등이 될 수 있습니다. 다음 예제는 행 또는 열 내부에
+행 또는 열을 중첩하는 방법을 보여줍니다. 
 
 This layout is organized as a Row. The row contains two children:
 a column on the left, and an image on the right:
+이 레이아웃을 행으로 구성됩니다. 행은 두개의 자식이 포함되어 있습니다:
+하나의 열은 왼쪽에, 그리고 하나의 이미지는 오른쪽에 있습니다:
 
 {% asset ui/layout/pavlova-diagram.png class="mw-100"
     alt="Screenshot with callouts showing the row containing two children" %}
 
 The left column's widget tree nests rows and columns.
+왼쪽 열의 widget 트리가 행과 열을 중첩합니다.
 
 {% asset ui/layout/pavlova-left-column-diagram.png class="mw-100"
     alt="Diagram showing a left column broken down to its sub-rows and sub-columns" %}
