@@ -341,6 +341,8 @@ The left column's widget tree nests rows and columns.
 
 You'll implement some of Pavlova's layout code in
 [Nesting rows and columns](#nesting-rows-and-columns).
+여러분은 [중첩된 행과 열](#nesting-rows-and-columns)에 
+Pavlova의 레이아웃의 일부를 구현합니다.
 
 {{site.alert.note}}
   Row and Column are basic primitive widgets for horizontal
@@ -355,15 +357,31 @@ You'll implement some of Pavlova's layout code in
   a column-like layout that automatically scrolls if its content is too long
   to fit the available space.  For more information,
   see [Common layout widgets](#common-layout-widgets).
+  행과 열은 수평적과 수직적 레이아웃을 위한 기본 원시적인 widget입니다. &mdash;
+  이러한 낮은 수준 widget은 최대한의 사용자 정의를 허용합니다.
+  플러터는 또한 여러분의 필요를 충분히 만족할만한 특별하고, 높은 수준 위젯 제공합니다.
+  예를 들면, 여러분은 행 대신에, [ListTile]({{api}}/material/ListTile-class.html)을 선호할지도 모릅니다
+  [ListTile]({{api}}/material/ListTile-class.html)은,
+  선행 및 후행 아이콘 그리고 최대 3 줄의 텍스트 속성이 가진 사용하기 쉬운 위젯입니다. 여러분은 열 대신에,
+  [ListView]({{api}}/widgets/ListView-class.html)을 선호할지도 모릅니다
+  [ListView]({{api}}/widgets/ListView-class.html)은,
+  만약 내용이 너무 길어서 사용 가능한 공간에 맞지 않는 경우 자동으로
+  스크롤되는 열과 같은 레이아웃입니다. 더 많은 정보는,
+  [Common layout widgets](#common-layout-widgets)에서 볼 수 있습니다.
 {{site.alert.end}}
 
 ### Aligning widgets
+### widget 정렬
 
 You control how a row or column aligns its children using the
 `mainAxisAlignment` and `crossAxisAlignment` properties.
 For a row, the main axis runs horizontally and the cross axis runs
 vertically. For a column, the main axis runs vertically and the cross
 axis runs horizontally.
+여러분은 `mainAxisAlignment` 와 `crossAxisAlignment`속성을 사용해서
+행과 열의 자식을 어떻게 정렬할지 제어할 수 있습니다.
+행의 경우, 중심 축을 수평으로 정렬하고, 수직으로 교차되게 정렬할 수 있습니다.
+열의 경우, 중심 축을 수직으로 정렬하고, 수평으로 교차되게 정렬할 수 있습니다.
 
 <div class="mb-2 text-center">
   {% asset ui/layout/row-diagram.png class="mb-2 mw-100"
@@ -372,9 +390,9 @@ axis runs horizontally.
       alt="Diagram showing the main axis and cross axis for a column" %}
 </div>
 
-The [MainAxisAlignment]({{api}}/rendering/MainAxisAlignment-class.html)
-and [CrossAxisAlignment]({{api}}/rendering/CrossAxisAlignment-class.html)
-classes offer a variety of constants for controlling alignment.
+[MainAxisAlignment]({{api}}/rendering/MainAxisAlignment-class.html)과
+[CrossAxisAlignment]({{api}}/rendering/CrossAxisAlignment-class.html)
+클래스는 정렬을 위한 다양한 상수를 제공합니다.
 
 {{site.alert.note}}
   When you add images to your project,
@@ -385,12 +403,23 @@ classes offer a variety of constants for controlling alignment.
   or [Adding Assets and Images in Flutter](/docs/development/ui/assets-and-images).
   You don't need to do this if you're referencing online images using
   `Image.network`.
+  여러분이 여러분의 프로젝트에 이미지를 추가하려고 하려면,
+  여러분은 이미지를 사용하기 위해 pubspec 파일의 수정이 필요합니다.&mdash;
+  이 예제는 이미지를 보여주기 위해 `Image.asset` 사용합니다. 더 많은 정보는,
+  여기 예제에서 볼 수 있습니다. [pubspec.yaml
+  file]({{examples}}/layout/row/pubspec.yaml),
+  또는 [Adding Assets and Images in Flutter](/docs/development/ui/assets-and-images).
+  만약 여러분이 온라인 이미지를 사용하는 `Image.network`를 사용하여 온라인 이미지를 참조한다면, 이 예제는 필요하지 않습니다.
 {{site.alert.end}}
 
 In the following example, each of the 3 images is 100 pixels wide.
 The render box (in this case, the entire screen) is more than 300 pixels wide,
 so setting the main axis alignment to `spaceEvenly` divides the free
 horizontal space evenly between, before, and after each image.
+다음 예제에서, 3 개의 이미지는 각각 100 픽셀 너비입니다.
+렌더링 박스(이 예제에서, 전체화면)는 300 픽셀 이상의 너비입니다,
+중심 축을 `spaceEvenly` 으로 세팅하면 각 이미지 사이, 그리고 이미지 앞뒤에 균등하게 빈 수평 공간을
+나누어 가지도록 줍니다.
 
 <div class="row">
 <div class="col-lg-8">
@@ -418,6 +447,10 @@ of 3 images, each is 100 pixels high. The height of the render box
 (in this case, the entire screen) is more than 300 pixels, so
 setting the main axis alignment to `spaceEvenly` divides the free vertical
 space evenly between, above, and below each image.
+열은 행과 같은 방식으로 작동합니다. 다음 예제는 각각 100 픽셀 높이의 3개 이미지의 열을 보여줍니다.
+렌더 박스의 높이(이 예제에서, 전체화면)는 300 픽셀 이상이며, 
+중심 축을 `spaceEvenly` 으로 세팅하면 각 이미지 사이, 그리고 이미지 위아래에 균등하게 빈 수직 공간을
+나누어 가지도록 해줍니다.
 
 <div class="row">
 <div class="col-lg-8">
@@ -442,10 +475,14 @@ space evenly between, above, and below each image.
 </div>
 
 ### Sizing widgets
+### widgets 크기
 
 When a layout is too large to fit a device, a yellow and black striped pattern
 appears along the affected edge. Here is an [example][sizing] of a row that is
 too wide:
+레이아웃이 너무 커서 디바이스에 맞지 않는 경우, 영향을 맞는 부분에 노란색과 검은 줄무늬가 나타납니다.
+When a layout is too large to fit a device, a yellow and black striped pattern
+appears along the affected edge. 너무 넓은 한 행에 대한 [예제][sizing]가 여기 있습니다:
 
 {% asset ui/layout/layout-too-large.png class="mw-100" alt="Overly-wide row" %}
 {:.text-center}
@@ -453,6 +490,8 @@ too wide:
 Widgets can be sized to fit within a row or column by using the [Expanded][]
 widget. To fix the previous example where the row of images is too wide for its
 render box, wrap each image with an `Expanded` widget.
+위젯은 [Expanded][]을 사용해서 행 또는 열에 맞게 조정될 수 있습니다. 
+행의 이미지들이 렌더 박스보다 넓었던 예제를 수정하기 위해서, 각 이미지는 `Expanded` widget으로 포장하세요.
 
 <div class="row">
 <div class="col-lg-8">
