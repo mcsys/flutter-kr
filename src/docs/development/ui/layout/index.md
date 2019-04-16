@@ -475,7 +475,7 @@ space evenly between, above, and below each image.
 </div>
 
 ### Sizing widgets
-### widgets 크기
+### widgets 베열
 
 When a layout is too large to fit a device, a yellow and black striped pattern
 appears along the affected edge. Here is an [example][sizing] of a row that is
@@ -525,6 +525,10 @@ Perhaps you want a widget to occupy twice as much space as its siblings. For
 this, use the `Expanded` widget `flex` property, an integer that determines the
 flex factor for a widget. The default flex factor is 1. The following code sets
 the flex factor of the middle image to 2:
+만약 위젯이 인접한 위젯보다 두 배나 많은 공간을 차지하기를 원할 것입니다. 
+이를 위해, `Expanded` 위젯에 `flex` 속성을 사용하세요.
+정수 값은 위젯에 대한 flex 요소를 결정합니다.
+flex 요소의 기본값은 1입니다. 다음 코드는 중간 이미지의 flex 요소를 2로 설정합니다.
 
 <div class="row">
 <div class="col-lg-8">
@@ -558,11 +562,16 @@ the flex factor of the middle image to 2:
 [sizing]: {{examples}}/layout/sizing
 
 ### Packing widgets
+패킹 위젯들
 
 By default, a row or column occupies as much space along its main axis
 as possible, but if you want to pack the children closely together,
 set its `mainAxisSize` to `MainAxisSize.min`. The following example
 uses this property to pack the star icons together.
+기본적으로, 행 또는 열은 가능한 한 중심 축을 따라 많은 공간을 차지합니다.
+그러나 여러분이 자식 위젯을 긴밀이 묶기를 원한다면, 위젯의 `mainAxisSize` 를 `MainAxisSize.min` 설정합니다.
+다음 예제에서는 이 속성을 사용하여 별 아이콘을 묶습니다.
+
 
 <div class="row">
 <div class="col-lg-8">
@@ -589,10 +598,13 @@ uses this property to pack the star icons together.
 </div>
 
 ### Nesting rows and columns
+행과 열의 중첩
 
 The layout framework allows you to nest rows and columns inside of rows
 and columns as deeply as you need. Let's look the code for the outlined section
 of the following layout:
+여러분은 레이아웃 프레임 워크를 사용하여 필요한만큼 행과 열의 내부에 행과 열을 중첩 할 수 있습니다.
+다음 레이아웃의 윤곽선 부분에 대한 코드를 살펴 보겠습니다.
 
 {% asset ui/layout/pavlova-large-annotated.png class="border mw-100"
     alt="Screenshot of the pavlova app, with the ratings and icon rows outlined in red" %}
@@ -601,14 +613,18 @@ of the following layout:
 The outlined section is implemented as two rows. The ratings row contains
 five stars and the number of reviews. The icons row contains three
 columns of icons and text.
+아웃라인 영역은 두 개의 행으로 구현되어 있습니다. 평점 행에는 5 개의 별과 리뷰 수가 있습니다.
+아이콘 행에는 세 개의 아이콘 및 텍스트 열이 있습니다.
 
 The widget tree for the ratings row:
+평점 행에 대한 위젯 트리
 
 {% asset ui/layout/widget-tree-pavlova-rating-row.png class="mw-100" alt="Ratings row widget tree" %}
 {:.text-center}
 
 The `ratings` variable creates a row containing a smaller row of 5 star icons,
 and text:
+`ratings` 변수는 5 개의 별 모양의 아이콘과 텍스트의 작은 행을 포함하는 행을 만듭니다
 
 <?code-excerpt "layout/pavlova/lib/main.dart (ratings)" replace="/ratings/[!$&!]/g"?>
 ```dart
@@ -647,15 +663,19 @@ final [!ratings!] = Container(
 {{site.alert.tip}}
   To minimize the visual confusion that can result from heavily nested layout
   code, implement pieces of the UI in variables and functions.
+  심하게 중첩 된 레이아웃 코드로 인해 발생할 수있는 시각적 혼란을 최소화하려면, 변수 및 함수에 UI 부분을 구현하세요.
 {{site.alert.end}}
 
 The icons row, below the ratings row, contains 3 columns; each column contains
 an icon and two lines of text, as you can see in its widget tree:
+평점 행 아래 아이콘 행은 3개의 열을 가집니다. 
+각 열은 위젯 트리에서 볼 수 있는 것처럼 하나의 아이콘과 두 줄의 텍스트를 포함합니다.
 
 {% asset ui/layout/widget-tree-pavlova-icon-row.png class="mw-100" alt="Icon widget tree" %}
 {:.text-center}
 
 The `iconList` variable defines the icons row:
+`iconList` 변수는 아이콘 행을 정의합니다:
 
 <?code-excerpt "layout/pavlova/lib/main.dart (iconList)" replace="/iconList/[!$&!]/g"?>
 ```dart
@@ -706,6 +726,7 @@ final [!iconList!] = DefaultTextStyle.merge(
 
 The `leftColumn` variable contains the ratings and icons rows, as well as the
 title and text that describes the Pavlova:
+`leftColumn` 변수는 평점 행과 아이콘 행 뿐만 아니라, Pavlova를 설명하는 제목과 텍스트를 포함합니다.
 
 <?code-excerpt "layout/pavlova/lib/main.dart (leftColumn)" replace="/leftColumn/[!$&!]/g"?>
 ```dart
