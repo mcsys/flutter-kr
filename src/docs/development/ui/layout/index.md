@@ -746,6 +746,8 @@ final [!leftColumn!] = Container(
 The left column is placed in a `Container` to constrain its width.
 Finally, the UI is constructed with the entire row (containing the
 left column and the image) inside a `Card`.
+왼쪽 열은 너비를 제한하는 '컨테이너'에 배치됩니다. 
+마지막으로 UI는`Card` 내부의 전체 행 (왼쪽 열과 이미지 포함)으로 구성됩니다.
 
 The [Pavlova image][] is from [Pixabay][].
 You can embed an image from the net using `Image.network()` but,
@@ -753,6 +755,12 @@ for this example, the image is saved to an images directory in the project,
 added to the [pubspec file,]({{examples}}/layout/pavlova/pubspec.yaml)
 and accessed using `Images.asset()`. For more information, see
 [Adding assets and images](/docs/development/ui/assets-and-images).
+[Pavlova image][] 출처는 [Pixabay][] 입니다.
+여러분은 `Image.network ()`를 사용하여 네트워크를 통해 이미지를 삽입 할 수 있습니다.
+그러나, 이 예제의 경우, 이미지는 프로젝트의 이미지 디렉토리에 저장하고,
+[pubspec file,]({{examples}}/layout/pavlova/pubspec.yaml)에 추가합니다.
+그리고 `Images.asset()`을 사용하여 접근합니다. 더 많은 정보는 
+[Adding assets and images](/docs/development/ui/assets-and-images)에서 볼 수 있습니다.
 
 <?code-excerpt "layout/pavlova/lib/main.dart (body)"?>
 ```dart
@@ -783,6 +791,11 @@ body: Center(
   recommend the iPad Pro. You can change its orientation to landscape mode using
   **Hardware > Rotate**. You can also change the size of the simulator window
   (without changing the number of logical pixels) using **Window > Scale**.
+  Pavlova 예제는 타블렛과 같이 폭이 넓은 장치에서 가장 수평적으로 실행됩니다.
+  만약 여러분이 iOS 시뮬레이터에서 이 예제를 실행한다면, 여러분은 **Hardware > Device** 메뉴에서 
+  다른 디바이스를 선택해 사용할 수 있습니다. 여기 예제에서는, 아이패드 프로를 추천합니다.
+  **Hardware > Rotate**.를 사용하여 방향을 가로 모드로 변경할 수 있습니다.
+  또한 **Window > Scale**을 사용하여 (논리적 픽셀 수의 변경 없이)시뮬레이터의 윈도우 사이즈를 변경할 수 있습니다.
 {{site.alert.end}}
 
 **App source:** [pavlova]({{examples}}/layout/pavlova)
@@ -793,6 +806,7 @@ body: Center(
 <hr>
 
 ## Common layout widgets
+일반적인 레이아웃 위젯
 
 Flutter has a rich library of layout widgets. Here are a few of those most
 commonly used. The intent is to get you up and running as quickly as possible,
@@ -801,6 +815,11 @@ available widgets, refer to the [Widget catalog][],
 or use the Search box in the [API reference docs]({{api}}).
 Also, the widget pages in the API docs often make suggestions
 about similar widgets that might better suit your needs.
+Flutter에는 다양한 레이아웃 위젯 라이브러리가 있습니다. 여기까지는 가장 일반적으로 사용되는 몇 가지 예입니다.
+위젯의 전체 목록을 모두 전달하기보다는 여러분이 가능한 빠르게 만들고 실행하는데 의도가 있습니다. 
+다른 사용 가능한 위젯에 대한 정보는 [Widget catalog][]를 참고하세요.
+또는 [API reference docs]({{api}}) 안에서 탐색 박스를 사용하세요.
+또한, API 문서의 위젯 페이지는 종종 사용자의 요구에 더 잘 맞는 유사한 위젯에 대한 제안을 합니다.
 
 The following widgets fall into two categories: standard widgets from the
 [widgets library][], and specialized widgets from the [Material library][]. Any
